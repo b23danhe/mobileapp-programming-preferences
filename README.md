@@ -1,9 +1,7 @@
 
 # Rapport
 
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
+En ny activity skapas som jag ger namnet SecondActivity.
 
 ## Följande grundsyn gäller dugga-svar:
 
