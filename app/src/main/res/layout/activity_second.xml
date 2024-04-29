@@ -8,8 +8,16 @@
     tools:context=".SecondActivity">
 
     <EditText
+        android:id="@+id/settingseditview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="@string/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/settingseditview"/>
+        android:id="@+id/prefButton"
+        android:onClick="savePref"
+        app:layout_constraintTop_toBottomOf="@id/prefText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
