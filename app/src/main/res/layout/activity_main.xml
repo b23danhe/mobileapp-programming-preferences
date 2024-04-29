@@ -25,12 +25,19 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/prefButton"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/prefText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/prefButton"/>
+
+    <Button
+        android:text="@string/save"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        android:id="@+id/prefButton"
+        android:onClick="savePref"
+        app:layout_constraintTop_toBottomOf="@id/prefText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
