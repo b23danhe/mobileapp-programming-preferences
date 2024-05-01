@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences myPreferenceRef;
     private SharedPreferences.Editor myPreferenceEditor;
-    private Button newScreenButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        newScreenButton = findViewById(R.id.newScreenButton);
+        myPreferenceRef = getSharedPreferences("pref", MODE_PRIVATE);
+        myPreferenceEditor = myPreferenceRef.edit();
+
+        // Instantiate a new button that starts a new screen when clicked
+        Button newScreenButton = findViewById(R.id.newScreenButton);
         newScreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,5 +36,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    /*
+    @Override
+    public void onResume(){
+        super.onResume();
+        TextView prefTextRef = findViewById(R.id.prefText);
+        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+    }
+    */
 }
