@@ -1,41 +1,45 @@
 
 # Rapport
 
-En ny activity skapas som jag ger namnet SecondActivity.
+En ny activity skapas tillsammans med en layout fil som jag ger namnet SecondActivity.java samt activity_second.xml.
+MainActivity sätts till att vara parent till SecondActivity:
 `android:parentActivityName=".MainActivity"`
 
-## Följande grundsyn gäller dugga-svar:
+Detta underlättar så att man kan gå tillbaka till MainActivity via en bakåtpil.
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+en knapp skapas för att kunna navigera till SecondActivity
+`private Button newScreenButton;
+newScreenButton = findViewById(R.id.newScreenButton);`
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Det görs genom att en ClickListener läggs till på knappen som skapar en ny screen (Intent) med SecondActivity
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+newScreenButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(intent);
     }
-}
+}); 
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+För att kunna visa, ändra och redigera en text som ska visas i MainActivity så skapas instanser av
+både SharedPreference och SharedPreference.Editor som jag namnger myPrefrenceRef respektive myPreferenceEditor
+dessa görs även private. 
+Dock är det endast en instans av SharedPreference som behövs i MainActivity eftersom
+den endast ska visas i en TextView i MainActivity. Men i SecondActivity behövs bägge instanserna för att kunna
+skriva och lagra de nya prefrenserna.
 
-![](android.png)
+För att visa den inmatade texten i MainActivity så läggs en onResume metod till i MainActivity.
+Denna metod säger att de nya preferenserna ska laddas in och visas i den TextView med namnet `prefTextRef`
+när man går tillbaka från SecondActivity.
+```
+@Override
+    public void onResume(){
+        super.onResume();
+        prefTextRef = findViewById(R.id.prefText);
+        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+    }
+```
 
-Läs gärna:
-
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+<img src="screenshot_1.png" alt="Main Activity" style="width:300px;height:600px;"> <img src="screenshot_2.png" alt="Second Activity" style="width:300px;height:600px;">

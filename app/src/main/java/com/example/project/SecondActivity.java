@@ -19,8 +19,9 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        saveButton = findViewById(R.id.saveButton);
+        // Instantiate a EditText field and a Button that saves the text.
         textInput = findViewById(R.id.inputView);
+        saveButton = findViewById(R.id.saveButton);
 
         myPreferenceRef = getSharedPreferences("prefText", MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
@@ -28,6 +29,7 @@ public class SecondActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Stores the new text/preferences
                 myPreferenceEditor.putString("MyAppPreferenceString", textInput.getText().toString());
                 myPreferenceEditor.apply();
             }
