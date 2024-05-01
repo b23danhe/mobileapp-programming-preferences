@@ -2,6 +2,7 @@
 # Rapport
 
 En ny activity skapas som jag ger namnet SecondActivity.
+`android:parentActivityName=".MainActivity"`
 
 ## Följande grundsyn gäller dugga-svar:
 

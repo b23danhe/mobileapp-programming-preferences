@@ -13,9 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences myPreferenceRef;
-    SharedPreferences.Editor myPreferenceEditor;
-    Button newScreenButton;
+    private SharedPreferences myPreferenceRef;
+    private Button newScreenButton;
+    private TextView prefTextRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         myPreferenceRef = getSharedPreferences("prefText", MODE_PRIVATE);
-        myPreferenceEditor = myPreferenceRef.edit();
 
         // Instantiate a new button that starts a new screen when clicked
         newScreenButton = findViewById(R.id.newScreenButton);
@@ -40,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        TextView prefTextRef = findViewById(R.id.prefText);
+        // Loading and display the new preferences
+        prefTextRef = findViewById(R.id.prefText);
         prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
     }
 }

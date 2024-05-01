@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
-    SharedPreferences myPreferenceRef;
-    SharedPreferences.Editor myPreferenceEditor;
-    EditText textInput;
-    Button saveButton;
+    private SharedPreferences myPreferenceRef;
+    private SharedPreferences.Editor myPreferenceEditor;
+    private EditText textInput;
+    private Button saveButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
