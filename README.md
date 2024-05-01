@@ -8,6 +8,7 @@ MainActivity sätts till att vara parent till SecondActivity:
 Detta underlättar så att man kan gå tillbaka till MainActivity via en bakåtpil.
 
 en knapp skapas för att kunna navigera till SecondActivity
+
 `private Button newScreenButton;
 newScreenButton = findViewById(R.id.newScreenButton);`
 
