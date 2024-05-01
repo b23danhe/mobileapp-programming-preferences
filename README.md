@@ -9,8 +9,10 @@ Detta underlättar så att man kan gå tillbaka till MainActivity via en bakåtp
 
 en knapp skapas för att kunna navigera till SecondActivity
 
-`private Button newScreenButton;
-newScreenButton = findViewById(R.id.newScreenButton);`
+```
+private Button newScreenButton;
+newScreenButton = findViewById(R.id.newScreenButton);
+```
 
 Det görs genom att en ClickListener läggs till på knappen som skapar en ny screen (Intent) med SecondActivity
 
@@ -28,7 +30,7 @@ För att kunna visa, ändra och redigera en text som ska visas i MainActivity s�
 både SharedPreference och SharedPreference.Editor som jag namnger myPrefrenceRef respektive myPreferenceEditor
 dessa görs även private. 
 Dock är det endast en instans av SharedPreference som behövs i MainActivity eftersom
-den endast ska visas i en TextView i MainActivity. Men i SecondActivity behövs bägge instanserna för att kunna
+den endast ska visa preferenserna i en TextView i MainActivity. Men i SecondActivity behövs bägge instanserna för att kunna
 skriva och lagra de nya prefrenserna.
 
 För att visa den inmatade texten i MainActivity så läggs en onResume metod till i MainActivity.

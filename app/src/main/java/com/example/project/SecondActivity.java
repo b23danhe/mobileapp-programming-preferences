@@ -29,7 +29,7 @@ public class SecondActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Stores the new text/preferences
+                // Change and store the new text/preferences
                 myPreferenceEditor.putString("MyAppPreferenceString", textInput.getText().toString());
                 myPreferenceEditor.apply();
             }
